@@ -1,0 +1,10 @@
+@import url('https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/LineSeedSansTH/LineSeedSansTH.css');
+
+body {
+    font-family: 'LINE Seed Sans TH', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+}

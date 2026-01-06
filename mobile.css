@@ -1,0 +1,11 @@
+/* Mobile Optimizations */
+input,
+select,
+textarea {
+    font-size: 16px;
+    /* Prevent iOS zoom */
+}
+
+.safe-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+}

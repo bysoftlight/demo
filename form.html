@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ส่งงาน</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/ui.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+
+<body class="bg-[#f8f9fa] pb-32">
+
+    <header class="fixed top-0 left-0 right-0 bg-white z-50 px-4 py-3 shadow-sm flex justify-between items-center h-16">
+        <div class="flex items-center gap-2"></div>
+        <div class="flex items-center gap-3">
+            <div class="text-right">
+                <div class="text-blue-400 text-sm font-bold">สวัสดี</div>
+                <div id="header-day" class="text-blue-400 text-lg font-bold leading-none">...</div>
+            </div>
+            <button
+                class="bg-blue-400 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center shadow-md">
+                <i class="bi bi-list text-xl font-bold"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full px-4 pt-24 max-w-lg mx-auto">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-blue-500 mb-6">ข้อมูลของฉัน</h2>
+            <div class="relative inline-block mb-4">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto bg-gray-200">
+                    <img id="user-pic" src="" alt="Profile" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="space-y-1 text-lg text-gray-800">
+                <p><span class="text-blue-500 font-bold">ชื่อ-สกุล : </span> <span id="user-name">...</span></p>
+                <p><span class="text-blue-500 font-bold">รหัสผู้ใช้สิทธิ์ : </span> <span id="user-id">...</span></p>
+                <p><span class="text-blue-500 font-bold">การใช้สิทธิ์ : </span> <span id="user-status">...</span></p>
+                <button class="text-red-400 text-xs underline mt-2">กรุณาตรวจสอบข้อมูลของท่านให้เรียบร้อย
+                    ก่อนดำเนินการในส่วนถัดไป</button>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100">
+            <h3 class="text-xl font-bold text-blue-500 mb-6">ส่วนที่ 2 : ส่งหลักฐาน</h3>
+
+            <div class="mb-4">
+                <label class="text-xs text-gray-800 ml-2 font-bold block mb-1">ชื่อ - สกุล *</label>
+                <div class="flex items-center bg-white border border-gray-200 rounded-2xl px-4 py-3">
+                    <i class="bi bi-person-fill text-blue-500 mr-3 text-lg"></i>
+                    <span id="form-user-name" class="text-gray-500">...</span>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="text-xs text-gray-800 ml-2 font-bold block mb-1">วันที่ *</label>
+                <div class="flex items-center bg-white border border-gray-200 rounded-2xl px-4 py-3">
+                    <i class="bi bi-calendar-event text-blue-500 mr-3 text-lg"></i>
+                    <span id="current-date" class="text-gray-500">...</span>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="text-xs text-gray-800 ml-2 font-bold block mb-1">เวลา *</label>
+                <div class="flex items-center bg-white border border-gray-200 rounded-2xl px-4 py-3">
+                    <i class="bi bi-clock text-blue-500 mr-3 text-lg"></i>
+                    <span id="current-time" class="text-gray-500">...</span>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="text-xs text-gray-800 ml-2 font-bold block mb-1">ตำแหน่งของคุณ *</label>
+                <div class="border border-gray-200 rounded-2xl overflow-hidden">
+                    <button id="btn-toggle-loc" class="w-full flex items-center justify-between px-4 py-3 bg-white">
+                        <div class="flex items-center overflow-hidden">
+                            <i class="bi bi-geo-alt-fill text-red-500 mr-3 text-lg flex-shrink-0"></i>
+                            <span id="location-text" class="text-gray-800 truncate text-sm">กำลังระบุพิกัด...</span>
+                        </div>
+                        <i id="loc-arrow" class="bi bi-chevron-down text-gray-400 transition-transform"></i>
+                    </button>
+                    <div id="location-panel" class="bg-gray-50 p-4 border-t border-gray-100 hidden animate-fade-in">
+                        <button id="btn-refresh-loc"
+                            class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 rounded-xl mb-3 flex items-center justify-center gap-2">
+                            <i class="bi bi-arrow-clockwise font-bold"></i> รีเฟรชตำแหน่ง
+                        </button>
+                        <div class="bg-yellow-100 text-yellow-800 text-xs p-3 rounded-xl flex items-start gap-2">
+                            <i class="bi bi-info-circle-fill mt-0.5"></i>
+                            <div><strong>หมายเหตุ:</strong><br />ระบบจะบันทึกตำแหน่ง GPS ของคุณโดยอัตโนมัติ
+                                เพื่อยืนยันสถานที่จำหน่ายสินค้า</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="text-xs text-gray-800 ml-2 font-bold block mb-2">ประเภทการขาย *</label>
+                <div class="space-y-2 pl-2">
+                    <label class="flex items-center gap-3 cursor-pointer" onclick="setSalesType('SELF')">
+                        <div id="radio-self"
+                            class="w-6 h-6 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                        </div>
+                        <span class="text-gray-800">ทำการขายด้วยตัวเอง</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer" onclick="setSalesType('AGENT')">
+                        <div id="radio-agent"
+                            class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                        </div>
+                        <span class="text-gray-800">ทำการขายโดยตัวแทน</span>
+                    </label>
+                </div>
+                <div id="agent-reason-wrapper" class="hidden mt-3 animate-fade-in">
+                    <input type="text" id="agent-reason" placeholder="กรุณาเขียนเหตุผล *"
+                        class="w-full px-4 py-3 rounded-xl border border-red-500 text-red-500 placeholder-red-400 focus:outline-none focus:ring-1 focus:ring-red-500">
+                    <p class="text-gray-500 text-xs mt-2 text-center">จะมีช่องให้กรอกเหตุผล (ที่จำเป็นต้องกรอก)</p>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <label class="text-xs text-gray-800 ml-2 font-bold block mb-2">ถ่ายภาพหลักฐาน *</label>
+                <input type="file" id="evidence-upload" accept="image/*" capture="environment" class="hidden">
+                <label for="evidence-upload" id="upload-btn"
+                    class="w-full py-3 rounded-2xl border border-[#ff914d] text-[#ff914d] bg-white flex items-center justify-center gap-2 cursor-pointer transition-colors">
+                    <i class="bi bi-camera-fill text-xl"></i>
+                    <span class="font-bold">ถ่ายภาพ / เลือกรูป</span>
+                </label>
+                <p id="upload-hint" class="text-center text-sm mt-2 font-medium text-[#ff914d]">
+                    เมื่อยังไม่ได้ถ่ายรูปหลักฐาน ส่วนนี้จะคงเป็นสีส้ม #ff914d</p>
+                <div id="preview-container" class="mt-4 rounded-xl overflow-hidden border border-gray-200 hidden">
+                    <img id="image-preview" src="" class="w-full h-auto">
+                </div>
+            </div>
+
+            <button id="btn-submit"
+                class="w-full py-4 rounded-full text-white font-bold text-lg flex items-center justify-center gap-3 transition-all transform active:scale-95 bg-gray-300 cursor-not-allowed"
+                disabled>
+                <i class="bi bi-send-fill transform -rotate-45 mt-1"></i>
+                <span>บันทึกข้อมูล</span>
+            </button>
+            <p class="text-center text-xs text-gray-400 mt-2">เมื่อทุกช่องถูกกรอกแล้ว ปุ่มบันทึกจะเปลี่ยนสีเป็นสีน้ำเงิน
+                #007ef1</p>
+        </div>
+    </main>
+
+    <footer class="py-8 bg-white text-center text-gray-400 text-sm mt-auto mb-20 border-t border-gray-100">
+        <div class="flex justify-center gap-4 mb-3">
+            <button class="hover:text-blue-500 transition-colors">เกี่ยวกับ</button>
+            <span>•</span>
+            <button class="hover:text-blue-500 transition-colors">ความเป็นส่วนตัว</button>
+            <span>•</span>
+            <button class="hover:text-blue-500 transition-colors">ข้อกำหนด</button>
+        </div>
+        <p>© 2026 TUBE™ Creative Group. All right reserved.</p>
+    </footer>
+
+    <div
+        class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] h-20 flex justify-around items-center z-50 rounded-t-2xl">
+        <a href="form.html" class="flex flex-col items-center justify-center w-1/3 text-blue-500">
+            <i class="bi bi-plus-circle-fill text-3xl mb-1 transform scale-110"></i>
+            <span class="text-xs font-bold">ส่งงาน</span>
+        </a>
+        <a href="history.html" class="flex flex-col items-center justify-center w-1/3 text-gray-300">
+            <i class="bi bi-clock-history text-3xl mb-1"></i>
+            <span class="text-xs font-bold">ประวัติ</span>
+        </a>
+        <button onclick="handleLogout()"
+            class="flex flex-col items-center justify-center w-1/3 text-red-500 hover:text-red-600">
+            <i class="bi bi-box-arrow-right text-3xl mb-1"></i>
+            <span class="text-xs font-bold">ออกจากระบบ</span>
+        </button>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/form.js"></script>
+</body>
+
+</html>

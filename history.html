@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ประวัติ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/ui.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+
+<body class="bg-[#f8f9fa] pb-32">
+
+    <header class="fixed top-0 left-0 right-0 bg-white z-50 px-4 py-3 shadow-sm flex justify-between items-center h-16">
+        <div class="flex items-center gap-2"></div>
+        <div class="flex items-center gap-3">
+            <div class="text-right">
+                <div class="text-blue-400 text-sm font-bold">สวัสดี</div>
+                <div id="header-day" class="text-blue-400 text-lg font-bold leading-none">...</div>
+            </div>
+            <button
+                class="bg-blue-400 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center shadow-md">
+                <i class="bi bi-list text-xl font-bold"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full px-4 pt-24 max-w-lg mx-auto">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-blue-500 mb-6">ข้อมูลของฉัน</h2>
+            <div class="relative inline-block mb-4">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto bg-gray-200">
+                    <img id="user-pic" src="" alt="Profile" class="w-full h-full object-cover" />
+                </div>
+            </div>
+            <div class="space-y-1 text-lg text-gray-800">
+                <p><span class="text-blue-500 font-bold">ชื่อ-สกุล : </span> <span id="user-name">...</span></p>
+                <p><span class="text-blue-500 font-bold">รหัสผู้ใช้สิทธิ์ : </span> <span id="user-id">...</span></p>
+                <p><span class="text-blue-500 font-bold">การใช้สิทธิ์ : </span> <span id="user-status">...</span></p>
+            </div>
+        </div>
+
+        <div class="flex justify-center gap-3 mb-6">
+            <button onclick="setFilter('week')" id="f-week"
+                class="px-6 py-2 rounded-full border border-gray-300 font-bold transition-colors bg-white text-gray-400">รายสัปดาห์</button>
+            <button onclick="setFilter('month')" id="f-month"
+                class="px-6 py-2 rounded-full border border-gray-300 font-bold transition-colors bg-white text-gray-400">รายเดือน</button>
+            <button onclick="setFilter('year')" id="f-year"
+                class="px-6 py-2 rounded-full border border-gray-300 font-bold transition-colors bg-white text-gray-400">รายปี</button>
+            <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white">
+                <i class="bi bi-layers-fill"></i>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-b from-blue-100 to-blue-300 rounded-[2rem] p-6 text-center mb-6 shadow-sm">
+            <div id="summary-title" class="text-black font-medium mb-2">...</div>
+            <div class="text-blue-500 text-5xl font-bold mb-1"><span id="summary-count">0</span> <span
+                    class="text-lg font-normal">รายการ</span></div>
+            <div id="summary-desc" class="text-black text-sm">...</div>
+        </div>
+
+        <div id="history-list" class="space-y-4">
+            <div class="text-center text-gray-400">กำลังโหลด...</div>
+        </div>
+    </main>
+
+    <footer class="py-8 bg-white text-center text-gray-400 text-sm mt-auto mb-20 border-t border-gray-100">
+        <div class="flex justify-center gap-4 mb-3">
+            <button class="hover:text-blue-500 transition-colors">เกี่ยวกับ</button>
+            <span>•</span>
+            <button class="hover:text-blue-500 transition-colors">ความเป็นส่วนตัว</button>
+            <span>•</span>
+            <button class="hover:text-blue-500 transition-colors">ข้อกำหนด</button>
+        </div>
+        <p>© 2026 TUBE™ Creative Group. All right reserved.</p>
+    </footer>
+
+    <div
+        class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] h-20 flex justify-around items-center z-50 rounded-t-2xl">
+        <a href="form.html" class="flex flex-col items-center justify-center w-1/3 text-gray-300">
+            <i class="bi bi-plus-circle-fill text-3xl mb-1"></i>
+            <span class="text-xs font-bold">ส่งงาน</span>
+        </a>
+        <a href="history.html" class="flex flex-col items-center justify-center w-1/3 text-blue-500">
+            <i class="bi bi-clock-history text-3xl mb-1 transform scale-110"></i>
+            <span class="text-xs font-bold">ประวัติ</span>
+        </a>
+        <button onclick="handleLogout()"
+            class="flex flex-col items-center justify-center w-1/3 text-red-500 hover:text-red-600">
+            <i class="bi bi-box-arrow-right text-3xl mb-1"></i>
+            <span class="text-xs font-bold">ออกจากระบบ</span>
+        </button>
+    </div>
+
+    <div id="img-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/90 p-4 hidden"
+        onclick="closeImageModal()">
+        <button class="absolute top-4 right-4 text-white p-2">
+            <i class="bi bi-x-lg text-2xl"></i>
+        </button>
+        <img id="modal-image" src="" class="max-w-full max-h-full rounded-lg" onclick="event.stopPropagation()">
+        <a id="modal-download" href="#" download="evidence.jpg" onclick="event.stopPropagation()"
+            class="absolute bottom-10 bg-white text-black px-6 py-2 rounded-full font-bold flex items-center gap-2">
+            <i class="bi bi-download"></i> ดาวน์โหลด
+        </a>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/history.js"></script>
+</body>
+
+</html>
